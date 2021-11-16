@@ -1,7 +1,7 @@
 {
-  "name": "aula17",
+  "name": "Agenda JS",
   "version": "1.0.0",
-  "description": "",
+  "description": "Agenda utilizando javascript, express, mongodb E ... mais",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
     "dev": "webpack -w"
   },
   "keywords": [],
-  "author": "",
+  "author": "José Marcos Vinícius Andrade Gois",
   "license": "ISC",
   "dependencies": {
     "connect-flash": "^0.1.1",
