@@ -1,5 +1,5 @@
 {
-  "name": "Agenda JS",
+  "name": "agendajs",
   "version": "1.0.0",
   "description": "Agenda utilizando javascript, express, mongodb E ... mais",
   "main": "server.js",
