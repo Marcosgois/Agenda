@@ -1,59 +1,57 @@
-<%- include('includes/head')  %>
-<%- include('includes/nav')  %>
+<%- include('includes/head') %>
+  <%- include('includes/nav') %>
 
-<div class="conteiner">
-    <div class="row">
+    <div class="conteiner">
+      <div class="row">
         <div class="col-lg-2"></div>
-        
+
         <div class="col-lg-8 my-3">
-            <h1 class="text-center">Agenda</h1>
-            <p class="text-center lead">Seus contatos estão abaixo:</p>
-
-        <div class="row">
-
-          <%- include('includes/messages') %> 
-            <div class="col-lg">
+          <h1 class="text-center">Agenda</h1>
+          <p class="text-center lead">Seus contatos estão abaixo:</p>
+          <%- include('includes/messages') %>
+            <div class="row">
+              <div class="col-lg">
                 <h4>Login</h4>
 
 
                 <form action="/login/login" method="POST">
-                    <input type="hidden" name="_csrf" value=<%=csrfToken%>> 
-                    <div class="mb-3">
-                      <label for="InputEmail" class="form-label">Email</label>
-                      <input type="email" class="form-control" name="email">
-                      <div id="emailHelp" class="form-text">Entre com o email cadastrado</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="InputPassword" class="form-label">Password</label>
-                      <input type="password" class="form-control" name="password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Entrar</button>
-                  </form>
+                  <input type="hidden" name="_csrf" value=<%=csrfToken%>>
+                  <div class="mb-3">
+                    <label for="InputEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email">
+                    <div id="emailHelp" class="form-text">Entre com o email cadastrado</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="InputPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Entrar</button>
+                </form>
 
-            </div>
-            <div class="col-lg">
+              </div>
+              <div class="col-lg">
                 <h4>Cadastro</h4>
 
                 <form action="/login/register" method="POST">
-                    <input type="hidden" name="_csrf" value=<%=csrfToken%>> 
-                    <div class="mb-3">
-                      <label for="InputEmail" class="form-label">Email</label>
-                      <input type="email" class="form-control" name="email" aria-describedby="emailHelp">
-                      <div id="emailHelp" class="form-text">Cadastre com o seu email</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="InputPassword" class="form-label">Senha</label>
-                      <input type="password" class="form-control" name="password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Cadastrar</button>
-                  </form>
+                  <input type="hidden" name="_csrf" value=<%=csrfToken%>>
+                  <div class="mb-3">
+                    <label for="InputEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">Cadastre com o seu email</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="InputPassword" class="form-label">Senha</label>
+                    <input type="password" class="form-control" name="password">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </form>
+              </div>
             </div>
+
         </div>
 
-    </div>
-
         <div class="col-lg-2"></div>
+      </div>
     </div>
-</div>    
 
-<%- include('includes/footer')  %>
+    <%- include('includes/footer') %>

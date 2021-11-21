@@ -27,6 +27,7 @@ class Login {
       return;
     } else if (!bcryptjs.compareSync(this.body.password, this.user.password)) {
       this.errors.push('Senha Inválida.');
+      this.user = null;
       return;
     }
   }

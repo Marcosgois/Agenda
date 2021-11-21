@@ -1,8 +1,8 @@
 const Login = require("../models/LoginModel");
 
 exports.index = (req, res) => {
-  res.render('login');
-  return;
+  if (req.session.user) return res.render('loggedUser')
+  return res.render('login');;
 };
 
 exports.register = async function (req, res) {
@@ -13,13 +13,13 @@ exports.register = async function (req, res) {
     if (login.errors.length > 0) {
       req.flash('errors', login.errors);
       req.session.save(() => {
-        return res.redirect('/login/index');
+        return res.redirect('back');
       });
       return;
     }
     req.flash('success', 'Seu usuário foi criado com sucesso!');
     req.session.save(() => {
-      return res.render('/login/index');
+      return res.render('back');
     });
   } catch (e) {
     console.log(e);
@@ -39,7 +39,9 @@ exports.login = async function (req, res) {
       });
       return;
     }
+
     req.flash('success', 'Login com sucesso!');
+    req.session.user = login.user;
     req.session.save(() => {
       return res.redirect('/login/index');
     });
@@ -48,3 +50,8 @@ exports.login = async function (req, res) {
     return res.render('404');
   }
 };
+
+exports.logout = function (req, res) {
+  req.session.destroy();
+  res.redirect('/');
+}
