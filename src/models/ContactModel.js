@@ -47,4 +47,18 @@ Contact.prototype.cleanUp = function () {
     }
 };
 
+Contact.prototype.searchById = async function (id) {
+    if (typeof id !== 'string') return;
+    const user = await ContactModel.findById(id);
+    return user;
+}
+
+Contact.prototype.edit = async function (id) {
+    if (typeof id !== 'string') return;
+    this.validate();
+
+    if (this.errors.length > 0) return;
+    this.contact = await ContactModel.findByIdAndUpdate(id, this.body, { new: true });
+};
+
 module.exports = Contact;
