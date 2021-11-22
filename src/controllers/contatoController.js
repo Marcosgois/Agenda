@@ -22,7 +22,7 @@ exports.register = async function (req, res) {
         }
         req.flash('success', 'Seu contato foi criado com sucesso!');
         req.session.save(() => {
-            return res.render(`contato/index/${contact.contact._id}`);
+            return res.render(`/`);
         });
     } catch (e) {
         console.log(e);
@@ -57,10 +57,23 @@ exports.edit = async function (req, res) {
         }
         req.flash('success', 'Seu contato foi editado com sucesso!');
         req.session.save(() => {
-            return res.redirect(`/contato/index/${contact.contact._id}`);
+            return res.redirect('back');
         });
     } catch (e) {
         console.log(e);
         return res.render('404');
     };
+}
+
+exports.delete = async function (req, res) {
+    if (!req.params.id) return res.render('404');
+    try {
+        const contact = new Contact(req.body);
+        console.log(await contact.delete(req.params.id));
+        req.session.save(() => {
+            return res.redirect('back')
+        })
+    } catch (e) {
+        console.log(e);
+    }
 }
