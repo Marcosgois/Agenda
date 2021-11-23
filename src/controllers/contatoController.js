@@ -9,7 +9,6 @@ exports.index = (req, res) => {
 
 exports.register = async function (req, res) {
     try {
-        console.log(`Req Body: ${JSON.stringify(req.body)}`);
         const contact = new Contact(req.body);
         await contact.register();
 
@@ -22,7 +21,7 @@ exports.register = async function (req, res) {
         }
         req.flash('success', 'Seu contato foi criado com sucesso!');
         req.session.save(() => {
-            return res.render(`/`);
+            return res.redirect(`/`);
         });
     } catch (e) {
         console.log(e);
@@ -35,7 +34,7 @@ exports.editIndex = async function (req, res) {
     try {
         const contactNew = new Contact(req.body);
         const contact = await contactNew.searchById(req.params.id);
-        console.log(contact);
+        // console.log(contact);
         res.render('contato', { contact })
     } catch (e) {
         console.log(e);
@@ -69,7 +68,7 @@ exports.delete = async function (req, res) {
     if (!req.params.id) return res.render('404');
     try {
         const contact = new Contact(req.body);
-        console.log(await contact.delete(req.params.id));
+        await contact.delete(req.params.id);
         req.session.save(() => {
             return res.redirect('back')
         })
